@@ -3,17 +3,17 @@ require 'rails_helper'
 RSpec.describe UserSerializer, :type => :serializer do 
 
   describe 'User Representation' do
-    let(:user) { @user = create(:user) }
+    let(:resource) { @user = create(:user) }
 
-    let(:serializer) { UserSerializer.new(:user) }
+    let(:serializer) { UserSerializer.new(resource) }
     let(:serialization) { ActiveModel::Serializer::Adapter.create(serializer) }
 
     subject do
       JSON.parse(serialization.to_json)['user']
     end
 
-    it 'has a username' do
-      expect(subject).to be_a_user_representation(user)
+    it 'returns json object of user' do
+      expect(subject).to be_a_user_representation(resource)
     end
   end
 end
