@@ -11,16 +11,16 @@ RSpec.describe UserSerializer, :type => :serializer do
       serialization.to_json
     end
 
-    it 'foo' do
+    it 'checks that the JSON response returns expected' do
       response_attributes = user.attributes.slice *%w(
         id
-        email
+        username
       )
       expect(JSON.parse(subject)).to eq(response_attributes)
     end
 
-    #it 'returns a json object for the user' do
-      #expect(subject).to be_a_user_representation_of(user)
-    #end
+    # it 'returns a json object for the user' do
+    #   expect(subject).to be_a_user_representation_of(user)
+    # end
   end
 end
