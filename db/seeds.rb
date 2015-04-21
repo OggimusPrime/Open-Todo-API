@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+3.times do
+  user = User.new(
+    username: Faker::Lorem.characters(6),
+    password: Faker::Lorem.characters(10)
+    )
+  user.save!
+end
+users = User.all
+
+puts "3 users created"
