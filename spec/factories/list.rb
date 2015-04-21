@@ -4,5 +4,4 @@ FactoryGirl.define do
     user nil
     permissions "MyString"
   end
-
 end
