@@ -7,8 +7,8 @@ RSpec.describe Api::ListsController, type: :controller do
     it "creates list" do
       allow(controller).to receive(:authenticated?)
       post :create, :user_id => "1", list: { name: "list", permissions: "public" }
-      # assert_equal 201, response.status
-      expect(response).to be_success
+      assert_equal 201, response.status
+      # expect(response).to be_success
       assert_equal Mime::JSON, response.content_type
     end
 

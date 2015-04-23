@@ -5,7 +5,7 @@ class Api::ItemsController < ApiController
     item = Item.new(params.require(:item).permit(:description))
 
     if item.save
-      render json: item #, status: 201, location: list
+      render json: item, status: 201
     end
   end
 end

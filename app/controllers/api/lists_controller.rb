@@ -5,7 +5,7 @@ class Api::ListsController < ApiController
     list = List.new(params.require(:list).permit(:name, :permissions))
 
     if list.save
-      render json: list #, status: 201, location: list
+      render json: list, status: 201
     end
   end
 end

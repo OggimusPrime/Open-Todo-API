@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :lists
   has_many :items, through: :lists
 
+  validates_presence_of :password, on: :create
+
   # before_create :set_auth_token
 
   # private

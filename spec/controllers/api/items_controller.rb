@@ -7,8 +7,8 @@ RSpec.describe Api::ItemsController, type: :controller do
     it "creates item" do
       allow(controller).to receive(:authenticated?)
       post :create, :list_id => "1", item: { description: "this is an item" }
-      # assert_equal 201, response.status
-      expect(response).to be_success
+      assert_equal 201, response.status
+      # expect(response).to be_success
       assert_equal Mime::JSON, response.content_type
     end
 

@@ -23,8 +23,8 @@ RSpec.describe Api::UsersController, type: :controller do
       allow(controller).to receive(:authenticated?)
       
       post :create, user: { username: 'Bob', password: 'bobtest' }
-      # assert_equal 201, response.status
-      expect(response).to be_success
+      assert_equal 201, response.status
+      # expect(response).to be_success
       assert_equal Mime::JSON, response.content_type
     end
 
