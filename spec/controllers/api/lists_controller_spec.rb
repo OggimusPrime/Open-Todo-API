@@ -34,4 +34,28 @@ RSpec.describe Api::ListsController, type: :controller do
       assert_equal 204, response.status
     end
   end
+
+  describe "Lists#update" do
+
+    before do
+      @list = create(:list)
+    end
+
+    it "successfully updates lists" do
+      allow(controller).to receive(:authenticated?)
+      patch :update, :user_id => @user.id, :id => @list.id, 
+        list: { name: "Update" }
+
+      assert_equal 200, response.status
+      assert_equal 'Update', @list.reload.name
+    end
+
+    it "unsuccessfully updates with no name" do
+      allow(controller).to receive(:authenticated?)
+      patch :update, :user_id => @user.id, :id => @list.id, 
+        list: { name: "" }
+
+      assert_equal 422, response.status
+    end
+  end
 end
