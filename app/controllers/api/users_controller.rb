@@ -12,16 +12,15 @@ class Api::UsersController < ApiController
     if user.save
       render json: user, status: 201
     else
-      render json: { errors: user.errors.full_messages }, status: 422
+      render json: {}, status: 422
     end
   end
 
   def destroy
-    begin
-      user = User.find(params[:id])
-      user.destroy
-      render json: {}, status: 204
-    rescue ActiveRecord::RecordNotFound
+    user = User.find(params[:id])
+    if user.destroy
+       render json: {}, status: 204
+    else
       render json: {}, status: 404
     end
   end
