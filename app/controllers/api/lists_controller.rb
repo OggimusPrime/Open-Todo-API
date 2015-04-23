@@ -7,15 +7,16 @@ class Api::ListsController < ApiController
 
     if list.save
       render json: list, status: 201
+    else
+      render json: {}, status: 422
     end
   end
 
   def destroy
-    begin
-      list = List.find(params[:id])
-      list.destroy
+    list = List.find(params[:id])
+    if list.destroy
       render json: {}, status: 204
-    rescue ActiveRecord::RecordNotFound
+    else
       render json: {}, status: 404
     end
   end
