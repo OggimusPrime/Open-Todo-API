@@ -9,4 +9,14 @@ class Api::ListsController < ApiController
       render json: list, status: 201
     end
   end
+
+  def destroy
+    begin
+      list = List.find(params[:id])
+      list.destroy
+      render json: {}, status: 204
+    rescue ActiveRecord::RecordNotFound
+      render json: {}, status: 404
+    end
+  end
 end
