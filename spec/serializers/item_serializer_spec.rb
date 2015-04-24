@@ -16,7 +16,7 @@ RSpec.describe ItemSerializer, :type => :serializer do
         list_id
         id
         description
-        compeleted
+        completed
       )
       expect(JSON.parse(subject)).to eq(response_attributes)
     end
