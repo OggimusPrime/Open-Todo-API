@@ -3,7 +3,7 @@ class Api::ListsController < ApiController
 
   def create
     user = User.find(params[:user_id])
-    list = user.lists.build(params.require(:list).permit(:name, :permissions))
+    list = user.lists.build(list_params)
 
     if list.save
       render json: list, status: 201
@@ -19,5 +19,20 @@ class Api::ListsController < ApiController
     else
       render json: {}, status: 404
     end
+  end
+
+  def update
+    list = List.find(params[:id])
+    if list.update(list_params)
+      render json: list, status: 200
+    else
+      render json: {}, status: 422
+    end
+  end
+
+  private
+
+  def list_params
+    params.require(:list).permit(:name, :permissions)
   end
 end
