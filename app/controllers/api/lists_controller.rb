@@ -14,7 +14,7 @@ class Api::ListsController < ApiController
 
   def destroy
     list = List.find(params[:id])
-    if list.destroy
+    if (current_user == list.user) && list.destroy
       render json: {}, status: 204
     else
       render json: {}, status: 404
@@ -23,7 +23,7 @@ class Api::ListsController < ApiController
 
   def update
     list = List.find(params[:id])
-    if list.update(list_params)
+    if (current_user == list.user) && list.update(list_params)
       render json: list, status: 200
     else
       render json: {}, status: 422
