@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ItemSerializer, :type => :serializer do
-
+RSpec.describe ItemSerializer, type: :serializer do
   describe 'Item Representation' do
     let(:item) { @item = create(:item) }
     let(:serializer) { ItemSerializer.new(item) }

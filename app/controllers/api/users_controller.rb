@@ -1,8 +1,7 @@
 class Api::UsersController < ApiController
-  # before_action :authenticate
   before_action :authenticated?
 
-  def index 
+  def index
     users = User.all
     render json: users
   end
@@ -19,7 +18,7 @@ class Api::UsersController < ApiController
   def destroy
     user = User.find(params[:id])
     if user.destroy
-       render json: {}, status: 204
+      render json: {}, status: 204
     else
       render json: {}, status: 404
     end
