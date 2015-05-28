@@ -1,6 +1,6 @@
 class Api::ItemsController < ApiController
   before_action :authenticated?
-  
+
   def create
     list = List.find(params[:list_id])
     item = list.items.build(item_params)
@@ -13,7 +13,7 @@ class Api::ItemsController < ApiController
   end
 
   def update
-    list = List.find(params[:list_id])
+    # list = List.find(params[:list_id])
     item = Item.find(params[:id])
     if (current_user == item.list.user) && item.update(item_params)
       render json: item, status: 200

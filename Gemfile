@@ -8,7 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem "active_model_serializers", github: "rails-api/active_model_serializers", branch: "master"
+gem 'active_model_serializers', github: 'rails-api/active_model_serializers', branch: 'master'
 gem 'faker'
 
 group :production do
@@ -23,10 +23,9 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
-  gem 'spring'
+  gem 'spring', '~> 1.3.4'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
   gem 'factory_girl_rails', '~>4.0'
 end
-

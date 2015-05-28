@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :item do
-    description "MyString"
+    description 'MyString'
     completed false
   end
 end
